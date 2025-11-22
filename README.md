@@ -5,8 +5,8 @@ Replay is an iOS app that lets you import, view, and preserve your full Instagra
 This repository acts as the central hub for the Replay project.
 
 ## 📄 Legal
-- **Privacy Policy:** /privacy (via GitHub Pages)
-- **Terms of Service:** /terms (via GitHub Pages)
+- **Privacy Policy:** [./privacy](./privacy) (via GitHub Pages)
+- **Terms of Service:** [./terms](./terms) (via GitHub Pages)
 
 ## 🛠️ Project Status
 Replay is currently in **pre-launch development**, preparing for App Store submission.  
@@ -29,7 +29,7 @@ Key goals include stability improvements, polishing core flows, and finalising c
 - Replay+ subscription flow  
 
 ## 📬 Support
-support@replay.app (placeholder)
+support@eridianlabs.org (placeholder)
 
 ## 🌐 Project Links
 Website coming soon.  
