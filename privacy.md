@@ -70,5 +70,14 @@ Updates will appear on this page.
 
 ## 7. Contact
 
-support@replay.app
+support@eridianlabs.org
 
+Replay is developed by Eridian Labs.
+
+## 8. Data Retention
+
+Replay does not retain any user data. All data remains on the user's device or in their private iCloud if they enable Replay+ Cloud Backup. Users may delete their data at any time by removing it from the App or uninstalling the App.
+
+---
+
+Replay complies with applicable data protection principles, including GDPR guidelines around data minimisation and user control.
