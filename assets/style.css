@@ -303,6 +303,10 @@ main {
     margin: 0 auto;
 }
 
+.buttons-primary {
+    margin-bottom: 20px;
+}
+
 .btn {
     padding: 14px 32px;
     border-radius: 50px;
