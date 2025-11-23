@@ -365,12 +365,6 @@ main {
     transform: translateY(-2px);
 }
 
-.btn-coming-soon::after {
-    content: '🔜';
-    margin-left: 8px;
-    font-size: 16px;
-}
-
 /* Footer */
 footer {
     background: var(--bg-surface);
