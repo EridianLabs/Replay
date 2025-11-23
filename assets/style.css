@@ -12,16 +12,17 @@ html {
     --gradient-start: #4FC3F7;
     --gradient-end: #1976D2;
     --gradient-light: linear-gradient(135deg, #4FC3F7 0%, #1976D2 100%);
-    --gradient-vertical: linear-gradient(180deg, #ffffff 0%, #f0f5ff 100%);
+    --gradient-vertical: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
     --text-primary: #1d1d1f;
     --text-secondary: #6e6e73;
     --bg-white: #ffffff;
     --bg-surface: #f7f7f7;
+    --bg-tint: #fafbfc;
     --border-color: rgba(0, 0, 0, 0.08);
     --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
-    --shadow-apple: 0 12px 48px rgba(0, 0, 0, 0.12);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-apple: 0 12px 48px rgba(0, 0, 0, 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,26 +31,28 @@ html {
         --text-secondary: #a1a1a6;
         --bg-white: #000000;
         --bg-surface: #1c1c1e;
+        --bg-tint: #141414;
         --border-color: rgba(255, 255, 255, 0.1);
         --gradient-vertical: linear-gradient(180deg, #000000 0%, #0a0a0f 100%);
     }
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
     color: var(--text-primary);
     background: var(--bg-white);
-    line-height: 1.6;
+    line-height: 1.7;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
 }
 
 /* Hero Section */
 header {
-    padding: 120px 20px 100px;
+    padding: 140px 20px 120px;
     text-align: center;
     background: var(--gradient-vertical);
     position: relative;
@@ -66,83 +69,83 @@ header {
 .icon-card {
     width: 160px;
     height: 160px;
-    margin: 0 auto 40px;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(40px) saturate(180%);
-    -webkit-backdrop-filter: blur(40px) saturate(180%);
-    border-radius: 36px;
-    padding: 0;
-    box-shadow: var(--shadow-apple);
+    margin: 0 auto 48px;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(50px) saturate(180%);
+    -webkit-backdrop-filter: blur(50px) saturate(180%);
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     overflow: hidden;
+}
+
+.icon-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 @media (prefers-color-scheme: dark) {
     .icon-card {
-        background: rgba(28, 28, 30, 0.9);
-        border-color: rgba(255, 255, 255, 0.1);
+        background: rgba(28, 28, 30, 0.85);
+        border-color: rgba(255, 255, 255, 0.15);
     }
-}
-
-.icon-card::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: 36px;
-    padding: 2px;
-    background: linear-gradient(135deg, rgba(79, 195, 247, 0.2), rgba(25, 118, 210, 0.2));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.icon-card:hover::before {
-    opacity: 1;
 }
 
 .app-icon {
     width: 120px;
     height: 120px;
-    border-radius: 26px;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
+    border-radius: 0;
+    background: transparent;
 }
 
 h1 {
-    font-size: 72px;
+    font-size: 80px;
     font-weight: 700;
-    letter-spacing: -2.5px;
-    margin-bottom: 20px;
+    letter-spacing: -3px;
+    margin-bottom: 24px;
     color: var(--text-primary);
-    line-height: 1.1;
+    line-height: 1.05;
+    font-weight: 600;
 }
 
 .tagline {
-    font-size: 24px;
+    font-size: 26px;
     color: var(--text-secondary);
-    font-weight: 400;
-    max-width: 600px;
+    font-weight: 300;
+    max-width: 640px;
     margin: 0 auto;
     line-height: 1.5;
+    letter-spacing: -0.3px;
 }
 
 .hero-subtitle {
-    font-size: 18px;
+    font-size: 19px;
     color: var(--text-secondary);
     font-weight: 400;
     max-width: 600px;
-    margin: 24px auto 0;
+    margin: 28px auto 0;
     line-height: 1.6;
+    font-weight: 400;
 }
 
 /* Main Content */
@@ -155,26 +158,29 @@ main {
 
 /* Features Section */
 .features-section {
-    background: var(--bg-surface);
-    padding: 100px 20px;
+    background: var(--bg-white);
+    padding: 120px 20px;
 }
 
 .section-title {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
+    font-size: 52px;
+    font-weight: 600;
+    letter-spacing: -2px;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     color: var(--text-primary);
+    line-height: 1.1;
 }
 
 .section-subtitle {
-    font-size: 21px;
+    font-size: 22px;
     color: var(--text-secondary);
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto 80px;
+    max-width: 640px;
+    margin: 0 auto 100px;
     line-height: 1.6;
+    font-weight: 400;
+    letter-spacing: -0.2px;
 }
 
 .features {
@@ -187,11 +193,11 @@ main {
 
 .feature-card {
     background: var(--bg-white);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 48px 40px;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--border-color);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
 }
@@ -206,12 +212,12 @@ main {
     background: var(--gradient-light);
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .feature-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     border-color: var(--gradient-start);
 }
 
@@ -238,18 +244,20 @@ main {
     margin-bottom: 12px;
     color: var(--text-primary);
     letter-spacing: -0.5px;
+    line-height: 1.3;
 }
 
 .feature-description {
     font-size: 17px;
     color: var(--text-secondary);
     line-height: 1.7;
+    font-weight: 400;
 }
 
 /* App Preview Section */
 .app-preview {
-    background: var(--bg-white);
-    padding: 100px 20px;
+    background: var(--bg-tint);
+    padding: 120px 20px;
 }
 
 .preview-container {
@@ -306,18 +314,20 @@ main {
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 12px;
+    letter-spacing: -0.3px;
 }
 
 .preview-box p {
     font-size: 16px;
     color: var(--text-secondary);
+    font-weight: 400;
 }
 
 /* Buttons Section */
 .buttons-section {
     background: var(--bg-white);
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
 }
 
 .buttons {
@@ -331,12 +341,12 @@ main {
 }
 
 .btn {
-    padding: 16px 36px;
-    border-radius: 14px;
+    padding: 14px 32px;
+    border-radius: 50px;
     font-size: 17px;
-    font-weight: 600;
+    font-weight: 500;
     text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     border: none;
     cursor: pointer;
     font-family: inherit;
@@ -351,24 +361,26 @@ main {
 .btn-primary {
     background: var(--gradient-light);
     color: white;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 4px 12px rgba(79, 195, 247, 0.25);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 6px 20px rgba(79, 195, 247, 0.35);
 }
 
 .btn-secondary {
     background: var(--bg-white);
     color: var(--text-primary);
-    border: 2px solid var(--border-color);
+    border: 1.5px solid var(--border-color);
+    font-weight: 500;
 }
 
 .btn-secondary:hover {
     background: var(--bg-surface);
     border-color: var(--gradient-start);
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .btn-coming-soon {
@@ -376,8 +388,8 @@ main {
     color: white;
     cursor: not-allowed;
     border: none;
-    border-radius: 50px;
     box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+    font-weight: 500;
 }
 
 .btn-coming-soon:hover {
@@ -419,6 +431,7 @@ footer {
     text-decoration: none;
     font-size: 15px;
     transition: color 0.3s ease;
+    font-weight: 400;
 }
 
 .footer-link:hover {
@@ -429,12 +442,14 @@ footer {
     color: var(--text-secondary);
     font-size: 14px;
     margin-top: 16px;
+    font-weight: 400;
 }
 
 .footer-brand {
     color: var(--text-secondary);
     font-size: 14px;
     margin-top: 8px;
+    font-weight: 400;
 }
 
 /* Responsive */
@@ -446,46 +461,50 @@ footer {
 
 @media (max-width: 768px) {
     header {
-        padding: 80px 20px 60px;
+        padding: 100px 20px 80px;
     }
     
     .icon-card {
         width: 140px;
         height: 140px;
-        padding: 0;
+        padding: 16px;
+        margin-bottom: 40px;
     }
     
     .app-icon {
-        width: 140px;
-        height: 140px;
+        width: 108px;
+        height: 108px;
     }
     
     h1 {
-        font-size: 56px;
-        letter-spacing: -2px;
+        font-size: 64px;
+        letter-spacing: -2.5px;
+        margin-bottom: 20px;
     }
     
     .tagline {
-        font-size: 20px;
+        font-size: 22px;
     }
     
     .hero-subtitle {
-        font-size: 16px;
+        font-size: 17px;
+        margin-top: 24px;
     }
     
     .section-title {
-        font-size: 40px;
+        font-size: 44px;
+        letter-spacing: -1.5px;
     }
     
     .section-subtitle {
-        font-size: 18px;
-        margin-bottom: 60px;
+        font-size: 19px;
+        margin-bottom: 80px;
     }
     
     .features-section,
     .app-preview,
     .buttons-section {
-        padding: 60px 20px;
+        padding: 80px 20px;
     }
     
     .features {
@@ -515,46 +534,59 @@ footer {
         flex-direction: column;
         gap: 16px;
     }
+    
+    footer {
+        padding: 60px 20px;
+    }
 }
 
 @media (max-width: 480px) {
     header {
-        padding: 60px 20px 50px;
+        padding: 80px 20px 60px;
     }
     
     .icon-card {
         width: 120px;
         height: 120px;
-        padding: 0;
-        border-radius: 28px;
+        padding: 14px;
+        border-radius: 20px;
+        margin-bottom: 32px;
     }
     
     .app-icon {
-        width: 120px;
-        height: 120px;
+        width: 92px;
+        height: 92px;
     }
     
     h1 {
-        font-size: 48px;
-        letter-spacing: -1.5px;
+        font-size: 52px;
+        letter-spacing: -2px;
+        margin-bottom: 16px;
     }
     
     .tagline {
-        font-size: 18px;
+        font-size: 20px;
     }
     
     .hero-subtitle {
-        font-size: 15px;
+        font-size: 16px;
+        margin-top: 20px;
     }
     
     .section-title {
-        font-size: 36px;
+        font-size: 38px;
+        letter-spacing: -1px;
+    }
+    
+    .section-subtitle {
+        font-size: 17px;
+        margin-bottom: 60px;
     }
     
     .features-section,
     .app-preview,
     .buttons-section {
-        padding: 40px 20px;
+        padding: 60px 20px;
     }
     
     .feature-card {
@@ -565,10 +597,22 @@ footer {
         width: 56px;
         height: 56px;
         font-size: 28px;
+        margin-bottom: 24px;
+    }
+    
+    .feature-title {
+        font-size: 22px;
+    }
+    
+    .feature-description {
+        font-size: 16px;
     }
     
     .preview-box {
         padding: 40px 24px;
     }
+    
+    footer {
+        padding: 50px 20px;
+    }
 }
-
