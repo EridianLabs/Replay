@@ -351,17 +351,17 @@ main {
 }
 
 .btn-coming-soon {
-    background: linear-gradient(135deg, #007aff 0%, #4ca1ff 100%);
+    background: var(--gradient-light);
     color: white;
     cursor: not-allowed;
     border: none;
-    box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(79, 195, 247, 0.25);
     font-weight: 500;
 }
 
 .btn-coming-soon:hover {
-    background: linear-gradient(135deg, #0080ff 0%, #5cadff 100%);
-    box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+    background: var(--gradient-light);
+    box-shadow: 0 6px 20px rgba(79, 195, 247, 0.35);
     transform: translateY(-2px);
 }
 
