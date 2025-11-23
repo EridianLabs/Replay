@@ -27,22 +27,25 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         :root {
-            /* Light mode colors */
             --gradient-start: #4FC3F7;
             --gradient-end: #1976D2;
             --gradient-light: linear-gradient(135deg, #4FC3F7 0%, #1976D2 100%);
             --gradient-vertical: linear-gradient(180deg, #4FC3F7 0%, #1976D2 100%);
             --gradient-radial: radial-gradient(circle at 50% 0%, rgba(79, 195, 247, 0.15) 0%, transparent 70%);
+            --gradient-icon: linear-gradient(180deg, transparent 0%, #e8f0ff 100%);
             --text-primary: #1d1d1f;
             --text-secondary: #6e6e73;
             --bg-white: #ffffff;
-            --bg-surface: #fafafa;
+            --bg-surface: #f7f7f7;
             --bg-glass: rgba(255, 255, 255, 0.85);
-            --bg-glass-dark: rgba(255, 255, 255, 0.1);
             --border-color: rgba(0, 0, 0, 0.08);
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.12);
             --shadow-xl: 0 12px 60px rgba(0, 0, 0, 0.15);
         }
@@ -54,17 +57,16 @@
                 --bg-white: #000000;
                 --bg-surface: #1c1c1e;
                 --bg-glass: rgba(28, 28, 30, 0.85);
-                --bg-glass-dark: rgba(255, 255, 255, 0.05);
                 --border-color: rgba(255, 255, 255, 0.1);
                 --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-                --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+                --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.2);
                 --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
                 --shadow-xl: 0 12px 60px rgba(0, 0, 0, 0.6);
             }
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', 'Helvetica Neue', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
             color: var(--text-primary);
             background: var(--bg-white);
             line-height: 1.6;
@@ -77,7 +79,7 @@
         
         /* Hero Header */
         header {
-            padding: 120px 20px 100px;
+            padding: 100px 20px 80px;
             text-align: center;
             background: var(--gradient-vertical);
             position: relative;
@@ -106,22 +108,42 @@
             pointer-events: none;
         }
         
+        .icon-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 32px;
+            z-index: 1;
+        }
+        
+        .icon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 160px;
+            height: 160px;
+            background: var(--gradient-icon);
+            border-radius: 40px;
+            z-index: -1;
+            opacity: 0.6;
+        }
+        
         .app-icon {
-            width: 100px;
-            height: 100px;
+            width: 128px;
+            height: 128px;
             border-radius: 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             display: block;
-            margin: 0 auto 24px auto;
             position: relative;
             z-index: 1;
             background: transparent;
         }
         
         h1 {
-            font-size: 64px;
-            font-weight: 700;
-            letter-spacing: -2px;
+            font-size: 72px;
+            font-weight: 800;
+            letter-spacing: -2.5px;
             margin-bottom: 16px;
             color: white;
             position: relative;
@@ -133,7 +155,7 @@
             font-size: 22px;
             color: rgba(255, 255, 255, 0.95);
             font-weight: 400;
-            max-width: 680px;
+            max-width: 600px;
             margin: 0 auto;
             line-height: 1.6;
             position: relative;
@@ -158,7 +180,6 @@
             max-width: 1200px;
             width: 100%;
             margin: 0 auto;
-            padding: 100px 20px;
         }
         
         .section-title {
@@ -179,25 +200,49 @@
             line-height: 1.6;
         }
         
-        /* Feature Cards - 3x2 Grid */
+        /* Features Section */
+        .features-section {
+            background: var(--bg-surface);
+            padding: 80px 20px;
+        }
+        
         .features {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
-            margin-bottom: 100px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .feature-card {
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-radius: 24px;
+            background: var(--bg-white);
+            border-radius: 12px;
             padding: 40px;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .feature-card::before {
@@ -210,12 +255,12 @@
             background: var(--gradient-light);
             transform: scaleX(0);
             transform-origin: left;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
             border-color: var(--gradient-start);
         }
         
@@ -252,7 +297,8 @@
         
         /* App Preview Section */
         .app-preview {
-            margin-bottom: 100px;
+            background: var(--bg-white);
+            padding: 80px 20px;
         }
         
         .preview-container {
@@ -261,20 +307,33 @@
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .phone-mockup {
             width: 280px;
             height: 568px;
-            background: var(--bg-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            padding: 12px;
-            box-shadow: var(--shadow-xl);
-            border: 8px solid var(--border-color);
+            background: var(--bg-white);
+            border-radius: 50px;
+            padding: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border: 4px solid #1d1d1f;
             position: relative;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 24px;
+            background: #1d1d1f;
+            border-radius: 0 0 16px 16px;
+            z-index: 10;
         }
         
         .phone-mockup:hover {
@@ -284,8 +343,8 @@
         .phone-screen {
             width: 100%;
             height: 100%;
-            background: var(--gradient-vertical);
-            border-radius: 32px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -293,30 +352,21 @@
             position: relative;
         }
         
-        .phone-screen::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--gradient-radial);
-            opacity: 0.5;
-        }
-        
         .phone-placeholder {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 18px;
             text-align: center;
             padding: 20px;
             position: relative;
             z-index: 1;
+            font-weight: 500;
         }
         
         /* Buttons Section */
         .buttons-section {
+            background: var(--bg-white);
             text-align: center;
-            margin-bottom: 100px;
+            padding: 80px 20px;
         }
         
         .buttons {
@@ -325,6 +375,8 @@
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         
         .btn {
@@ -392,25 +444,20 @@
         }
         
         .btn-coming-soon {
-            background: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
-            color: var(--text-secondary);
+            background: linear-gradient(135deg, #007aff 0%, #4ca1ff 100%);
+            color: white;
             cursor: not-allowed;
-            opacity: 0.8;
-            border: 2px solid var(--border-color);
+            border: none;
+            border-radius: 50px;
             position: relative;
             z-index: 1;
-        }
-        
-        @media (prefers-color-scheme: dark) {
-            .btn-coming-soon {
-                background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
-                border-color: rgba(255, 255, 255, 0.1);
-            }
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
         }
         
         .btn-coming-soon:hover {
-            transform: none;
-            box-shadow: none;
+            background: linear-gradient(135deg, #0080ff 0%, #5cadff 100%);
+            box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+            transform: translateY(-2px);
         }
         
         .btn-coming-soon::after {
@@ -424,8 +471,20 @@
             background: var(--bg-surface);
             padding: 80px 20px;
             text-align: center;
-            border-top: 1px solid var(--border-color);
             margin-top: auto;
+            border-top: 1px solid var(--border-color);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 1px;
+            background: var(--border-color);
         }
         
         .footer-content {
@@ -497,9 +556,14 @@
                 height: 100px;
             }
             
+            .icon-wrapper::before {
+                width: 130px;
+                height: 130px;
+            }
+            
             h1 {
-                font-size: 48px;
-                letter-spacing: -1.5px;
+                font-size: 56px;
+                letter-spacing: -2px;
             }
             
             .tagline {
@@ -508,10 +572,6 @@
             
             .hero-subtitle {
                 font-size: 16px;
-            }
-            
-            main {
-                padding: 60px 20px;
             }
             
             .section-title {
@@ -523,18 +583,19 @@
                 margin-bottom: 40px;
             }
             
+            .features-section,
+            .app-preview,
+            .buttons-section {
+                padding: 60px 20px;
+            }
+            
             .features {
                 grid-template-columns: 1fr;
                 gap: 24px;
-                margin-bottom: 60px;
             }
             
             .feature-card {
                 padding: 32px;
-            }
-            
-            .app-preview {
-                margin-bottom: 60px;
             }
             
             .preview-container {
@@ -561,10 +622,6 @@
                 flex-direction: column;
                 gap: 16px;
             }
-            
-            .buttons-section {
-                margin-bottom: 60px;
-            }
         }
         
         @media (max-width: 480px) {
@@ -573,13 +630,18 @@
             }
             
             .app-icon {
-                width: 100px;
-                height: 100px;
+                width: 80px;
+                height: 80px;
+            }
+            
+            .icon-wrapper::before {
+                width: 110px;
+                height: 110px;
             }
             
             h1 {
-                font-size: 40px;
-                letter-spacing: -1px;
+                font-size: 48px;
+                letter-spacing: -1.5px;
             }
             
             .tagline {
@@ -592,6 +654,12 @@
             
             .section-title {
                 font-size: 32px;
+            }
+            
+            .features-section,
+            .app-preview,
+            .buttons-section {
+                padding: 40px 20px;
             }
             
             .feature-card {
@@ -613,48 +681,52 @@
 </head>
 <body>
     <header>
-        <img src="assets/replay-icon.svg" alt="Replay icon" class="app-icon">
+        <div class="icon-wrapper">
+            <img src="assets/replay-icon.svg" alt="Replay icon" class="app-icon">
+        </div>
         <h1>Replay</h1>
         <p class="tagline">Your Instagram memories. Reimagined. Stored offline. Always yours.</p>
         <p class="hero-subtitle">A beautiful, private way to preserve and browse your Instagram archive</p>
     </header>
     
     <main>
-        <section class="features">
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <h3 class="feature-title">Import Your Archive</h3>
-                <p class="feature-description">Import your full Instagram Data Archive ZIP file and access all your memories locally on your device.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📅</div>
-                <h3 class="feature-title">Beautiful Timeline</h3>
-                <p class="feature-description">Browse your posts, videos, and stories in a beautiful, intuitive timeline interface designed for memories.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <h3 class="feature-title">Offline Access</h3>
-                <p class="feature-description">All your content is stored locally. Access your memories anytime, anywhere, without an internet connection.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">☁️</div>
-                <h3 class="feature-title">Replay+</h3>
-                <p class="feature-description">Optional CloudKit backup and premium features to keep your memories safe and enhance your experience.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔍</div>
-                <h3 class="feature-title">Smart Search</h3>
-                <p class="feature-description">Instantly browse your archive by captions, dates, and media types with fast local indexing.</p>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🔒</div>
-                <h3 class="feature-title">Complete Privacy</h3>
-                <p class="feature-description">Replay never sends data to external servers. Your content stays entirely on your device unless you enable Replay+ iCloud backup.</p>
+        <section class="features-section">
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3 class="feature-title">Import Your Archive</h3>
+                    <p class="feature-description">Import your full Instagram Data Archive ZIP file and access all your memories locally on your device.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Beautiful Timeline</h3>
+                    <p class="feature-description">Browse your posts, videos, and stories in a beautiful, intuitive timeline interface designed for memories.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-title">Offline Access</h3>
+                    <p class="feature-description">All your content is stored locally. Access your memories anytime, anywhere, without an internet connection.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">☁️</div>
+                    <h3 class="feature-title">Replay+</h3>
+                    <p class="feature-description">Optional CloudKit backup and premium features to keep your memories safe and enhance your experience.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Smart Search</h3>
+                    <p class="feature-description">Instantly browse your archive by captions, dates, and media types with fast local indexing.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Complete Privacy</h3>
+                    <p class="feature-description">Replay never sends data to external servers. Your content stays entirely on your device unless you enable Replay+ iCloud backup.</p>
+                </div>
             </div>
         </section>
         
@@ -664,12 +736,12 @@
             <div class="preview-container">
                 <div class="phone-mockup">
                     <div class="phone-screen">
-                        <div class="phone-placeholder">App Preview<br/>Coming Soon</div>
+                        <div class="phone-placeholder">App Preview Coming Soon</div>
                     </div>
                 </div>
                 <div class="phone-mockup">
                     <div class="phone-screen">
-                        <div class="phone-placeholder">App Preview<br/>Coming Soon</div>
+                        <div class="phone-placeholder">App Preview Coming Soon</div>
                     </div>
                 </div>
             </div>
@@ -691,7 +763,7 @@
                 <a href="https://github.com/EridianLabs/Replay" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
             </div>
             <p class="footer-copyright">© Replay 2025</p>
-            <p class="footer-brand">An Eridian Labs Project</p>
+            <p class="footer-brand">Built with ❤️ by Eridian Labs</p>
         </div>
     </footer>
 </body>
