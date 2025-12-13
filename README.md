@@ -2,40 +2,26 @@
 
 Replay is an iOS app that lets you import, view, and preserve your full Instagram archive — posts, stories, videos, and moments — entirely offline, privately, and beautifully organised.
 
-This repository acts as the central hub for the Replay project.
+## 📄 Legal & Documentation
 
-## 📄 Legal
-- **Privacy Policy:** [./privacy](./privacy) (via GitHub Pages)
-- **Terms of Service:** [./terms](./terms) (via GitHub Pages)
+This repository contains the public web page and legal documentation for Replay:
 
-## 🛠️ Project Status
-Replay is currently in **pre-launch development**, preparing for App Store submission.  
-Key goals include stability improvements, polishing core flows, and finalising compliance requirements.
+- **Web Page:** [index.html](./index.html) - Landing page for the Replay app
+- **Privacy Policy:** [privacy.md](./privacy.md) - Privacy policy and data handling information
+- **Terms of Service:** [terms.md](./terms.md) - Terms of service and usage agreement
 
-## 🚀 Features (High-level)
-- Import full Instagram Data Archive ZIP  
-- Offline browsing of posts & stories  
-- Clean timeline layout  
-- Local caching for fast performance  
-- Replay+ (premium) features in progress:
-  - CloudKit backup  
-  - CloudKit restore  
-  - Premium filters and add-ons  
+## 🌐 Website
 
-## 🧪 Testing Focus
-- ZIP imports at all sizes  
-- Accessibility support  
-- Low-storage behaviour  
-- Replay+ subscription flow  
+The web page is hosted via GitHub Pages at: https://eridianlabs.github.io/Replay/
 
 ## 📬 Support
-support@eridianlabs.org (placeholder)
 
-## 🌐 Project Links
-Website coming soon.  
-For now, this repository serves as the public reference for Replay documentation and updates.
+For support inquiries, please contact: support@eridianlabs.org
+
+## 📱 App Store
+
+Download Replay on the App Store: [Replay Studio](https://apps.apple.com/app/replay-studio/id6755855126)
 
 ---
 
-Thanks for checking out Replay!# Replay
-Privacy policy, terms of service, and supporting documentation for the Replay iOS app.
+Thanks for checking out Replay!
